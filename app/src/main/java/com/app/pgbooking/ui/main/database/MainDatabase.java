@@ -1,6 +1,6 @@
 package com.app.pgbooking.ui.main.database;
 
-import com.app.pgbooking.ui.pgrooms.model.PgDataSet;
+import com.app.pgbooking.ui.pgrooms.model.RoomDataResponse;
 
 import rx.Observable;
 
@@ -10,5 +10,5 @@ import rx.Observable;
 
 public interface MainDatabase {
 
-    Observable<PgDataSet> observePgDataSet();
+    Observable<RoomDataResponse> observePgDataSet();
 }

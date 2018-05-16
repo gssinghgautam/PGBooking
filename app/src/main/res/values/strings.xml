@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PGBooking</string>
+    <string name="app_name">EZRooms</string>
 
     <!-- activity_login -->
     <string name="login.title">Firebase Login</string>
@@ -7,7 +7,7 @@
     <string name="login.hint.password">Password</string>
     <string name="login.button.login">Login</string>
     <string name="login.button.forgot">Forgot your password?</string>
-    <string name="login.text.register">No user yet?</string>
+    <string name="login.text.register">New here?</string>
     <string name="login.button.register">Register now</string>
     <string name="login.dialog.progress">Please wait...</string>
     <string name="login.dialog.registration.title">Create a new user</string>
@@ -76,6 +76,17 @@
     <string name="firstLogin.button.next">Start</string>
     <string name="pg_title">Pg Rooms</string>
     <string name="no_items_found">No Items found</string>
-
+    <string name="wifi">wifi</string>
+    <string name="lift">Lift</string>
+    <string name="parking">Parking</string>
+    <string name="gas">Gas Line</string>
+    <string name="getdirection">Get Direction</string>
+    <string name="locationinfo">Location Information</string>
+    <string name="rent_month">Rent(Month)</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="submit">Submit</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 
 </resources>

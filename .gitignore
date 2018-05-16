@@ -50,3 +50,5 @@ captures/
 freeline.py
 freeline/
 freeline_project_description.json
+app/libs/
+app/src/main/java/com/app/pgbooking/ui/user/presenter/

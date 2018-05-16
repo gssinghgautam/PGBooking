@@ -12,7 +12,6 @@ import com.app.pgbooking.Dependencies;
 import com.app.pgbooking.R;
 import com.app.pgbooking.ui.firstlogin.UserFirstLoginActivity;
 import com.app.pgbooking.ui.login.LoginActivity;
-import com.app.pgbooking.ui.pgrooms.PgListFragment;
 import com.app.pgbooking.ui.profile.ProfileActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -50,17 +49,9 @@ public class AndroidMainNavigator implements MainNavigator {
     @Override
     public void init() {
         if (firstOpen) {
-            this.toPgRooms();
+            //this.toPgRooms();
             firstOpen = false;
         }
-    }
-
-    private void toPgRooms() {
-        PgListFragment pgListFragment = new PgListFragment();
-        activity.getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container, pgListFragment)
-                .commit();
     }
 
     @Override
@@ -125,5 +116,15 @@ public class AndroidMainNavigator implements MainNavigator {
             }
         }, 2000);
         return true;
+    }
+
+    public void toShare() {
+        Intent whatsappIntent = new Intent(Intent.ACTION_SEND);
+        whatsappIntent.setType("text/plain");
+        whatsappIntent.putExtra(Intent.EXTRA_TEXT, "Let me recommend you this application  " + "https://play.google.com/store/apps/details?id=" + activity.getPackageName());
+        try {
+            activity.startActivity(whatsappIntent);
+        } catch (android.content.ActivityNotFoundException ex) {
+        }
     }
 }

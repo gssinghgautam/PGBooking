@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="16dp"
-                android:src="@drawable/ic_account_circle_black" />
+                app:srcCompat="@drawable/ic_account_circle_black" />
 
             <ImageView
                 android:layout_width="60dp"
@@ -27,7 +28,7 @@
                 android:layout_alignBottom="@id/profileImageView"
                 android:layout_alignEnd="@id/profileImageView"
                 android:layout_alignRight="@+id/profileImageView"
-                android:src="@drawable/ic_add_circle" />
+                app:srcCompat="@drawable/ic_add_circle" />
 
             <LinearLayout
                 android:id="@+id/nameLinearLayout"
@@ -36,8 +37,7 @@
                 android:layout_below="@id/profileImageView"
                 android:layout_marginTop="16dp"
                 android:background="@color/colorText"
-                android:clipToPadding="false"
-                android:elevation="1dp">
+                android:clipToPadding="false">
 
                 <TextView
                     android:id="@+id/nameTextView"
@@ -64,7 +64,6 @@
                 android:clipToPadding="false"
                 android:divider="@drawable/divider"
                 android:dividerPadding="8dp"
-                android:elevation="1dp"
                 android:orientation="vertical"
                 android:showDividers="middle">
 

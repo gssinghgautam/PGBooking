@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.app.pgbooking.ui.pgrooms.view.PgItemView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.app.pgbooking.ui.pgrooms.view.PgItemView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout="@layout/merge_pg_item_view"
     android:background="?android:attr/selectableItemBackground"
-    />
+    android:layout="@layout/merge_pg_item_view" />

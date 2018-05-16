@@ -10,9 +10,7 @@ import android.widget.TextView;
 
 import com.app.pgbooking.R;
 import com.app.pgbooking.Utils;
-import com.app.pgbooking.ui.pgrooms.model.PgData;
-
-import java.util.Locale;
+import com.app.pgbooking.ui.pgrooms.model.RoomData;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,20 +21,24 @@ import butterknife.ButterKnife;
 
 public class PgItemView extends RelativeLayout {
 
+
     @BindView(R.id.iv_pg)
     ImageView ivPg;
 
-    @BindView(R.id.txt_pg_name)
-    TextView txtPgName;
+    @BindView(R.id.tv_rent_price)
+    TextView tvRentPrice;
 
-    @BindView(R.id.tv_non_ac_price)
-    TextView tvNonAcPrice;
-
-    @BindView(R.id.tv_ac_price)
-    TextView tvAcPrice;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
 
     @BindView(R.id.tv_address)
     TextView tvAddress;
+
+    @BindView(R.id.tv_number_rooms)
+    TextView tvNumberRooms;
+
+    @BindView(R.id.tv_number_bathroom)
+    TextView tvNumberBathroom;
 
     private int layoutResId;
 
@@ -63,11 +65,12 @@ public class PgItemView extends RelativeLayout {
         ButterKnife.bind(this);
     }
 
-    public void display(final PgData pgData) {
-        Utils.loadPgImage(pgData.getThumbnail(), ivPg, getContext());
-        txtPgName.setText(pgData.getName());
-        tvAddress.setText(pgData.getAddress());
-        tvNonAcPrice.setText(String.format(Locale.getDefault(), "\u20B9 %s", pgData.getRentNonAc()));
-        tvAcPrice.setText(String.format(Locale.getDefault(), "\u20B9 %s", pgData.getRentAc()));
+    public void display(final RoomData pgData) {
+        Utils.loadPgImage(pgData.getImage(), ivPg, getContext());
+        tvTitle.setText(pgData.getPostTitle());
+        tvAddress.setText(String.format("%s, %s", pgData.getPostAddress(), pgData.getPostCity()));
+        tvRentPrice.setText(String.format("\u20B9 %s", pgData.getPostRent()));
+        tvNumberBathroom.setText(pgData.getPostBathrooms());
+        tvNumberRooms.setText(pgData.getPostBedrooms());
     }
 }

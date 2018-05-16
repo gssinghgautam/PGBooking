@@ -2,17 +2,22 @@ package com.app.pgbooking;
 
 import android.content.Context;
 
+import com.app.pgbooking.networking.RestApi;
+import com.app.pgbooking.networking.RetroSingleton;
 import com.app.pgbooking.rx.FirebaseObservableListeners;
 import com.app.pgbooking.storage.FirebaseStorageService;
 import com.app.pgbooking.storage.StorageService;
+import com.app.pgbooking.ui.boysroom.database.BoysRoomDatabase;
+import com.app.pgbooking.ui.boysroom.service.BoysRoomService;
+import com.app.pgbooking.ui.girlsroom.database.GirlsRoomDatabase;
+import com.app.pgbooking.ui.girlsroom.service.GirlsRoomService;
 import com.app.pgbooking.ui.login.database.FirebaseAuthDatabase;
 import com.app.pgbooking.ui.login.service.FirebaseLoginService;
 import com.app.pgbooking.ui.login.service.LoginService;
 import com.app.pgbooking.ui.main.service.FirebaseMainService;
 import com.app.pgbooking.ui.main.service.MainService;
-import com.app.pgbooking.ui.pgrooms.database.FirebasePgDatabase;
-import com.app.pgbooking.ui.pgrooms.services.FirebasePgService;
-import com.app.pgbooking.ui.pgrooms.services.PgService;
+import com.app.pgbooking.ui.pgdetails.database.PGRoomDataDetailsDatabase;
+import com.app.pgbooking.ui.pgdetails.service.PgRoomDataDetailsService;
 import com.app.pgbooking.ui.profile.service.FirebaseProfileService;
 import com.app.pgbooking.ui.profile.service.ProfileService;
 import com.app.pgbooking.ui.registration.service.FirebaseRegistrationService;
@@ -37,7 +42,9 @@ public enum Dependencies {
     private UserService userService;
     private ProfileService profileService;
     private MainService mainService;
-    private PgService pgService;
+    private BoysRoomService boysRoomService;
+    private GirlsRoomService girlsRoomService;
+    private PgRoomDataDetailsService roomDetailsService;
 
     public void init(Context context) {
         if (needsInitialisation()) {
@@ -51,15 +58,16 @@ public enum Dependencies {
             FirebaseObservableListeners firebaseObservableListeners = new FirebaseObservableListeners();
             FirebaseUserDatabase userDatabase = new FirebaseUserDatabase(firebaseDatabase, firebaseObservableListeners);
             FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
-            FirebasePgDatabase pgDatabase = new FirebasePgDatabase(firebaseDatabase, firebaseObservableListeners);
             loginService = new FirebaseLoginService(new FirebaseAuthDatabase(firebaseAuth));
             registrationService = new FirebaseRegistrationService(firebaseAuth);
             userService = new PersistedUserService(userDatabase);
             profileService = new FirebaseProfileService(firebaseAuth);
             storageService = new FirebaseStorageService(firebaseStorage, firebaseObservableListeners);
             mainService = new FirebaseMainService(firebaseAuth, userDatabase);
-            pgService = new FirebasePgService(pgDatabase);
-
+            RestApi restApi = RetroSingleton.getInstance().getRestApi();
+            boysRoomService = new BoysRoomService(new BoysRoomDatabase(restApi));
+            girlsRoomService = new GirlsRoomService(new GirlsRoomDatabase(restApi));
+            roomDetailsService = new PgRoomDataDetailsService(new PGRoomDataDetailsDatabase(restApi));
         }
     }
 
@@ -92,8 +100,16 @@ public enum Dependencies {
         return mainService;
     }
 
-    public PgService getPgService() {
-        return pgService;
+    public GirlsRoomService getGirlsRoomService() {
+        return girlsRoomService;
+    }
+
+    public BoysRoomService getBoysRoomService() {
+        return boysRoomService;
+    }
+
+    public PgRoomDataDetailsService getRoomDetailsService() {
+        return roomDetailsService;
     }
 
     public void clearDependecies() {

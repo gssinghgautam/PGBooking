@@ -100,24 +100,10 @@ public class Utils {
     }
 
     public static void loadPgImage(final String image, final ImageView imageView, final Context context) {
-
-        try {
-            if (image != null && image.length() > 0) {
-                StorageReference ref = Dependencies.INSTANCE.getStorageService().getPgImageReference(image);
-                Glide.with(context)
-                        .using(new FirebaseImageLoader())
-                        .load(ref)
-                        .into(imageView);
-            } else {
-                Glide.with(context)
-                        .load("")
-                        .placeholder(R.drawable.pg_default)
-                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                        .into(imageView);
-            }
-        } catch (IllegalArgumentException e) {
-
-        }
+        Glide.with(context)
+                .load(image)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .into(imageView);
     }
 
     public static void loadImageElseWhite(final String image, final CircleImageView imageView, final Context context) {

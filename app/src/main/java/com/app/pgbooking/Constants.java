@@ -22,5 +22,19 @@ public class Constants {
 
     public static final String PG_EXTRA = "pg_extra";
 
+    public static final String BASE_URL = "http://www.roomishere.com/com.roomishere.com/";
+    public static final String BOYS_PG_URL = "roomforboys.php";
+    public static final String GIRLS_PG_URL = "roomforgirls.php";
+    public static final String ROOM_DETAILS_URL = "post_details.php";
+    public static final String IMAGE_URL = "http://www.roomishere.com/images/roompost/";
 
+
+    public static final String ROOM_ID = "room_id";
+    public static final String ROOM_DATA = "room_data";
+
+    public static final String username = "roomsez@gmail.com";
+    public static final String password = "Ezrooms@ahrv";
+    public static final String TYPE = "type";
+    public static final String TITLE = "title";
+    public static final String FEATURED_IMAGE = "featured_image";
 }

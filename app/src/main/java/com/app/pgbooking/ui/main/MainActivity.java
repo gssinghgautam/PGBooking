@@ -1,10 +1,14 @@
 package com.app.pgbooking.ui.main;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.app.pgbooking.Dependencies;
 import com.app.pgbooking.R;
@@ -24,8 +28,32 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MainDisplayer mainDisplayer = (MainDisplayer) findViewById(R.id.mainView);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar!=null){
+            actionBar.setTitle(R.string.app_name);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        final MainDisplayer mainDisplayer = findViewById(R.id.mainView);
+        //DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        //toolbar.setTitle(R.string.app_name);
+        //setDrawer(drawerLayout, toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainDisplayer.openDrawer();
+            }
+        });
+
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mainDisplayer.openDrawer();
+            }
+        });
 
         GoogleApiClient googleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
@@ -41,6 +69,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 navigator,
                 this
         );
+    }
+
+    private void setDrawer(DrawerLayout drawerLayout, Toolbar toolbar) {
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
     }
 
     @Override

@@ -112,6 +112,9 @@ public class MainPresenter {
                 case R.id.profile:
                     navigator.toProfile();
                     break;
+                case R.id.nav_share:
+                    navigator.toShare();
+                    break;
                 case R.id.logout:
                     try {
                         if (mainService.getLoginProvider().equals("google.com"))

@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:gravity="center_horizontal"
-                android:text="@string/login.title"
+                android:text="@string/app_name"
                 android:textColor="@color/colorText"
                 android:textSize="24sp" />
 
@@ -85,8 +85,8 @@
                     android:id="@+id/forgotButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:background="@null"
                     android:text="@string/login.button.forgot"
                     android:textColor="@color/colorText" />
@@ -113,8 +113,8 @@
                     android:id="@+id/registerButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
                     android:background="@null"
                     android:text="@string/login.button.register"
                     android:textColor="@color/colorText" />
